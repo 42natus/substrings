@@ -1,13 +1,13 @@
 def substrings(string, dictionary)
   dictionary = dictionary.map { |word| word.downcase }
-  normalised = string.downcase.split
+  words = string.downcase.split
   
   result = Hash.new(0)
   
-  normalised.each do |word|
-    dictionary.each do |entry| 
-      if word.include?(entry) 
-        result[entry] += 1
+  words.each do |word|
+    dictionary.each do |substring| 
+      if word.include?(substring) 
+        result[substring] += 1
       end
     end
   end
@@ -15,7 +15,23 @@ def substrings(string, dictionary)
   result
 end
 
-# usage:
+# --- FOR TESTING ---
+# sample dictionary
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
-puts substrings("below", dictionary)
-puts substrings("Howdy partner, sit down! How's it going?", dictionary)
+
+# test strings:
+word = "below" # test for one word
+# multiple_words = "Howdy partner, sit down! How's it going?" # test for multiple words
+# no_occurrence = "zzz" # test for no occurrence of substring in string
+
+result = substrings(word, dictionary)
+
+# formatted output
+if result.empty?
+  puts "No substrings were found in string input"
+else
+  puts "Substrings found in entry:"
+  result.each do |substring, count|
+    puts "  \"#{substring}\" => #{count}\n"
+  end
+end
