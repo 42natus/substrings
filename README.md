@@ -19,9 +19,9 @@ Otherwise, you can just paste the contents into any Ruby REPL online.
 
 ### Screenshot
 
-Here's a usage example where the `substrings` method was called with:
+Here's a usage example where the `#substrings` method was called with:
 
-```
+```ruby
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 word = "below"
 
