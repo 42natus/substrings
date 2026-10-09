@@ -1,18 +1,11 @@
 # frozen_string_literal: true
 
 def substrings(string, dictionary)
-  dictionary = dictionary.map(&:downcase)
-  words = string.downcase.split
+  string = string.downcase
 
-  result = Hash.new(0)
+  matches = dictionary.map { |substring| string.scan(substring) }
 
-  words.each do |word|
-    dictionary.each do |substring|
-      result[substring] += 1 if word.include?(substring)
-    end
-  end
-
-  result
+  matches.flatten.tally
 end
 
 # --- FOR TESTING ---
